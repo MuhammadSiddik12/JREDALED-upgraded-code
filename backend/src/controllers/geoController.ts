@@ -19,11 +19,12 @@ export async function getBlocks(req: Request, res: Response): Promise<void> {
 
   const blocksWithCounts = await Promise.all(
     blocks.map(async (b) => {
-      const lightsCount = await Lights.count({ where: { BlockId: b.BlockId } });
+      const blockId = b.BlockId || b.getDataValue('BlockId');
+      const lightsCount = blockId ? await Lights.count({ where: { BlockId: blockId } }).catch(() => 0) : 0;
       return {
-        blockId: b.BlockId,
-        blockName: b.BlockName,
-        districtId: b.DistrictId,
+        blockId: blockId,
+        blockName: b.BlockName || b.getDataValue('BlockName'),
+        districtId: b.DistrictId || b.getDataValue('DistrictId'),
         lightsCount,
       };
     })
@@ -50,11 +51,12 @@ export async function getPanchayats(req: Request, res: Response): Promise<void> 
 
   const panchayatsWithCounts = await Promise.all(
     panchayats.map(async (p) => {
-      const lightsCount = await Lights.count({ where: { PanchayatId: p.PanchayatId } });
+      const panchayatId = p.PanchayatId || p.getDataValue('PanchayatId');
+      const lightsCount = panchayatId ? await Lights.count({ where: { PanchayatId: panchayatId } }).catch(() => 0) : 0;
       return {
-        panchayatId: p.PanchayatId,
-        panchayatName: p.PanchayatName,
-        blockId: p.BlockId,
+        panchayatId: panchayatId,
+        panchayatName: p.PanchayatName || p.getDataValue('PanchayatName'),
+        blockId: p.BlockId || p.getDataValue('BlockId'),
         lightsCount,
       };
     })

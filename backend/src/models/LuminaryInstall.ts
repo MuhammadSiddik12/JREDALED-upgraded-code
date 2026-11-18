@@ -10,11 +10,11 @@ export interface LuminaryInstallAttributes {
 }
 
 export class LuminaryInstall extends Model<LuminaryInstallAttributes> implements LuminaryInstallAttributes {
-  public InstallId!: number;
-  public LightId!: number;
-  public IMEINo!: string | null;
-  public InstallDate!: Date;
-  public InstallerName!: string | null;
+  declare InstallId: number;
+  declare LightId: number;
+  declare IMEINo: string | null;
+  declare InstallDate: Date;
+  declare InstallerName: string | null;
 }
 
 LuminaryInstall.init(

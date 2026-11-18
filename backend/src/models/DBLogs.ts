@@ -8,9 +8,9 @@ export interface DBLogsAttributes {
 }
 
 export class DBLogs extends Model<DBLogsAttributes> implements DBLogsAttributes {
-  public Sno!: number;
-  public FileName!: string | null;
-  public CreateDate!: Date;
+  declare Sno: number;
+  declare FileName: string | null;
+  declare CreateDate: Date;
 }
 
 DBLogs.init(

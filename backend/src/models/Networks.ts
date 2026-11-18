@@ -12,13 +12,13 @@ export interface NetworksAttributes {
 }
 
 export class Networks extends Model<NetworksAttributes> implements NetworksAttributes {
-  public NetworkId!: number;
-  public NetworkName!: string | null;
-  public DistrictId!: number | null;
-  public BlockId!: number | null;
-  public PanchayatId!: number | null;
-  public TotalLights!: number;
-  public CreatedOnDate!: Date;
+  declare NetworkId: number;
+  declare NetworkName: string | null;
+  declare DistrictId: number | null;
+  declare BlockId: number | null;
+  declare PanchayatId: number | null;
+  declare TotalLights: number;
+  declare CreatedOnDate: Date;
 }
 
 Networks.init(

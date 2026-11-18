@@ -22,23 +22,23 @@ export interface RMSInventoryAttributes {
 }
 
 export class RMSInventory extends Model<RMSInventoryAttributes> implements RMSInventoryAttributes {
-  public SNo!: number;
-  public HubId!: number;
-  public IMEINo!: string;
-  public RMSMobileNo!: string | null;
-  public SIMId!: string | null;
-  public SIMProvider!: string | null;
-  public SIMActiveOn!: string | null;
-  public SIMExpiredOn!: string | null;
-  public ControllerSerialNo!: string | null;
-  public ControllerModel!: string | null;
-  public MotorType!: string | null;
-  public PumpCategory!: string | null;
-  public PumpSetSerialNo!: string | null;
-  public MotorHP!: string | null;
-  public MotorHeadSize!: string | null;
-  public CreatedBy!: number;
-  public CreatedOnDate!: Date;
+  declare SNo: number;
+  declare HubId: number;
+  declare IMEINo: string;
+  declare RMSMobileNo: string | null;
+  declare SIMId: string | null;
+  declare SIMProvider: string | null;
+  declare SIMActiveOn: string | null;
+  declare SIMExpiredOn: string | null;
+  declare ControllerSerialNo: string | null;
+  declare ControllerModel: string | null;
+  declare MotorType: string | null;
+  declare PumpCategory: string | null;
+  declare PumpSetSerialNo: string | null;
+  declare MotorHP: string | null;
+  declare MotorHeadSize: string | null;
+  declare CreatedBy: number;
+  declare CreatedOnDate: Date;
 }
 
 RMSInventory.init(

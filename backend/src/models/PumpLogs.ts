@@ -23,24 +23,24 @@ export interface PumpLogsAttributes {
 }
 
 export class PumpLogs extends Model<PumpLogsAttributes> implements PumpLogsAttributes {
-  public SNo!: number;
-  public DistId!: number;
-  public IMEINo!: string;
-  public SIMId!: string | null;
-  public PowerStatus!: number;
-  public PumpStatus!: number;
-  public PumpError!: string | null;
-  public Voltage!: string | null;
-  public Current!: string | null;
-  public Frequency!: string | null;
-  public Temperature!: string | null;
-  public PhaseCurrentRYB!: string | null;
-  public GSMSignal!: string | null;
-  public LPM!: string | null;
-  public Longitude!: string | null;
-  public Latitude!: string | null;
-  public ExtraReserved!: string | null;
-  public LogDateTime!: Date;
+  declare SNo: number;
+  declare DistId: number;
+  declare IMEINo: string;
+  declare SIMId: string | null;
+  declare PowerStatus: number;
+  declare PumpStatus: number;
+  declare PumpError: string | null;
+  declare Voltage: string | null;
+  declare Current: string | null;
+  declare Frequency: string | null;
+  declare Temperature: string | null;
+  declare PhaseCurrentRYB: string | null;
+  declare GSMSignal: string | null;
+  declare LPM: string | null;
+  declare Longitude: string | null;
+  declare Latitude: string | null;
+  declare ExtraReserved: string | null;
+  declare LogDateTime: Date;
 }
 
 PumpLogs.init(

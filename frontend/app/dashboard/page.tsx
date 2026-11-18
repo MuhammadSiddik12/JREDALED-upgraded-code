@@ -103,8 +103,7 @@ export default function DashboardPage() {
                 backgroundImage: 'url(/JharkhandMap.png)',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center center',
-                width: '100%',
-                maxWidth: '538px',
+                width: '538px',
                 height: '523px',
                 margin: '0 auto',
               }}

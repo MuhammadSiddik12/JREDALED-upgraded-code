@@ -11,12 +11,12 @@ export interface PumpOnOffCycleAttributes {
 }
 
 export class PumpOnOffCycle extends Model<PumpOnOffCycleAttributes> implements PumpOnOffCycleAttributes {
-  public SNo!: number;
-  public DistId!: number;
-  public IMEINo!: string;
-  public PumpOnTime!: Date | null;
-  public PumpOffTime!: Date | null;
-  public CycleStatus!: number;
+  declare SNo: number;
+  declare DistId: number;
+  declare IMEINo: string;
+  declare PumpOnTime: Date | null;
+  declare PumpOffTime: Date | null;
+  declare CycleStatus: number;
 }
 
 PumpOnOffCycle.init(

@@ -15,16 +15,16 @@ export interface RMSCalibrationAttributes {
 }
 
 export class RMSCalibration extends Model<RMSCalibrationAttributes> implements RMSCalibrationAttributes {
-  public SNo!: number;
-  public MorningStartTime!: string;
-  public MorningStopTime!: string;
-  public EveningStartTime!: string;
-  public EveningStopTime!: string;
-  public VoltageValue!: string;
-  public CurrentValue!: string;
-  public FrequencyValue!: string;
-  public UpdateBy!: number;
-  public UpdatedOnDate!: Date;
+  declare SNo: number;
+  declare MorningStartTime: string;
+  declare MorningStopTime: string;
+  declare EveningStartTime: string;
+  declare EveningStopTime: string;
+  declare VoltageValue: string;
+  declare CurrentValue: string;
+  declare FrequencyValue: string;
+  declare UpdateBy: number;
+  declare UpdatedOnDate: Date;
 }
 
 RMSCalibration.init(

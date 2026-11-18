@@ -14,15 +14,15 @@ export interface OrganizationAttributes {
 }
 
 export class Organization extends Model<OrganizationAttributes> implements OrganizationAttributes {
-  public OrgId!: number;
-  public OrgName!: string;
-  public OrgEmail!: string | null;
-  public OrgMobile!: string | null;
-  public OrgAddress!: string | null;
-  public OrgState!: string | null;
-  public IsActive!: number;
-  public CreatedBy!: number;
-  public CreatedOnDate!: Date;
+  declare OrgId: number;
+  declare OrgName: string;
+  declare OrgEmail: string | null;
+  declare OrgMobile: string | null;
+  declare OrgAddress: string | null;
+  declare OrgState: string | null;
+  declare IsActive: number;
+  declare CreatedBy: number;
+  declare CreatedOnDate: Date;
 }
 
 Organization.init(

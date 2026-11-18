@@ -11,12 +11,12 @@ export interface UserAccessLevelAttributes {
 }
 
 export class UserAccessLevel extends Model<UserAccessLevelAttributes> implements UserAccessLevelAttributes {
-  public SNo!: number;
-  public UserId!: number;
-  public GroupMenuId!: number;
-  public MenuId!: number;
-  public MenuOrder!: number;
-  public CreatedOnDate!: Date;
+  declare SNo: number;
+  declare UserId: number;
+  declare GroupMenuId: number;
+  declare MenuId: number;
+  declare MenuOrder: number;
+  declare CreatedOnDate: Date;
 }
 
 UserAccessLevel.init(

@@ -6,17 +6,15 @@ export interface PanchayatAttributes {
   BlockId?: number | null;
   PanchayatName?: string | null;
   PanchayatCode?: string | null;
-  LuminaryTarget?: number;
   CreatedOnDate?: Date;
 }
 
 export class Panchayat extends Model<PanchayatAttributes> implements PanchayatAttributes {
-  public PanchayatId!: number;
-  public BlockId!: number | null;
-  public PanchayatName!: string | null;
-  public PanchayatCode!: string | null;
-  public LuminaryTarget!: number;
-  public CreatedOnDate!: Date;
+  declare PanchayatId: number;
+  declare BlockId: number | null;
+  declare PanchayatName: string | null;
+  declare PanchayatCode: string | null;
+  declare CreatedOnDate: Date;
 }
 
 Panchayat.init(
@@ -36,10 +34,6 @@ Panchayat.init(
     PanchayatCode: {
       type: DataTypes.STRING(10),
       allowNull: true,
-    },
-    LuminaryTarget: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
     },
     CreatedOnDate: {
       type: DataTypes.DATE,

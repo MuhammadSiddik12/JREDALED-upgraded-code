@@ -14,15 +14,15 @@ export interface DistributorAttributes {
 }
 
 export class Distributor extends Model<DistributorAttributes> implements DistributorAttributes {
-  public DistId!: number;
-  public DistName!: string;
-  public DistEmail!: string | null;
-  public DistMobile!: string | null;
-  public DistAddress!: string | null;
-  public LoginId!: string | null;
-  public IsActive!: number;
-  public CreatedBy!: number;
-  public CreatedOnDate!: Date;
+  declare DistId: number;
+  declare DistName: string;
+  declare DistEmail: string | null;
+  declare DistMobile: string | null;
+  declare DistAddress: string | null;
+  declare LoginId: string | null;
+  declare IsActive: number;
+  declare CreatedBy: number;
+  declare CreatedOnDate: Date;
 }
 
 Distributor.init(

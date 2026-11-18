@@ -10,11 +10,11 @@ export interface DistrictsAttributes {
 }
 
 export class Districts extends Model<DistrictsAttributes> implements DistrictsAttributes {
-  public DistrictId!: number;
-  public DistrictName!: string | null;
-  public DistrictCode!: string | null;
-  public LuminaryTarget!: number;
-  public CreatedOnDate!: Date;
+  declare DistrictId: number;
+  declare DistrictName: string | null;
+  declare DistrictCode: string | null;
+  declare LuminaryTarget: number;
+  declare CreatedOnDate: Date;
 }
 
 Districts.init(

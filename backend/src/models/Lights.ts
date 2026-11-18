@@ -18,19 +18,19 @@ export interface LightsAttributes {
 }
 
 export class Lights extends Model<LightsAttributes> implements LightsAttributes {
-  public LightId!: number;
-  public NetworkId!: number;
-  public DistrictId!: number;
-  public BlockId!: number;
-  public PanchayatId!: number;
-  public WardNo!: string | null;
-  public PoleNo!: string | null;
-  public IMEINo!: string | null;
-  public Status!: number;
-  public FaultStatus!: number;
-  public BatStateCharge!: number;
-  public KWH!: number;
-  public CreatedOnDate!: Date;
+  declare LightId: number;
+  declare NetworkId: number;
+  declare DistrictId: number;
+  declare BlockId: number;
+  declare PanchayatId: number;
+  declare WardNo: string | null;
+  declare PoleNo: string | null;
+  declare IMEINo: string | null;
+  declare Status: number;
+  declare FaultStatus: number;
+  declare BatStateCharge: number;
+  declare KWH: number;
+  declare CreatedOnDate: Date;
 }
 
 Lights.init(

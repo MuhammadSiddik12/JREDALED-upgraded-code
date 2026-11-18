@@ -6,17 +6,15 @@ export interface BlocksAttributes {
   DistrictId?: number | null;
   BlockName?: string | null;
   BlockCode?: string | null;
-  LuminaryTarget?: number;
   CreatedOnDate?: Date;
 }
 
 export class Blocks extends Model<BlocksAttributes> implements BlocksAttributes {
-  public BlockId!: number;
-  public DistrictId!: number | null;
-  public BlockName!: string | null;
-  public BlockCode!: string | null;
-  public LuminaryTarget!: number;
-  public CreatedOnDate!: Date;
+  declare BlockId: number;
+  declare DistrictId: number | null;
+  declare BlockName: string | null;
+  declare BlockCode: string | null;
+  declare CreatedOnDate: Date;
 }
 
 Blocks.init(
@@ -36,10 +34,6 @@ Blocks.init(
     BlockCode: {
       type: DataTypes.STRING(10),
       allowNull: true,
-    },
-    LuminaryTarget: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
     },
     CreatedOnDate: {
       type: DataTypes.DATE,

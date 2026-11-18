@@ -1,108 +1,192 @@
-/* Navigation and Sidebar refinements matching original codedthemes PHP */
-.pcoded-navbar {
-  width: 240px;
-  background: #fff;
-  min-height: calc(100vh - 56px);
-  box-shadow: 2px 0 6px rgba(0,0,0,0.06);
-  position: relative;
-  z-index: 99;
+/* ==========================================================================
+   JREDALED Custom Layout & Refinements
+   Fixes sidebar overlap and restores full-width responsive grid
+   ========================================================================== */
+
+/* Main Containers */
+.pcoded {
+  min-height: 100vh;
 }
+
 .pcoded-main-container {
-  display: flex;
-  min-height: calc(100vh - 56px);
+  display: block !important;
+  position: relative !important;
+  margin: 0 !important;
+  min-height: calc(100vh - 56px) !important;
+  background-color: #f6f7fb !important;
 }
+
 .pcoded-wrapper {
-  display: flex;
-  width: 100%;
+  display: block !important;
+  position: relative !important;
+  margin: 0 !important;
+  width: 100% !important;
 }
+
+/* Sidebar Navigation */
+.pcoded-navbar {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 240px !important;
+  min-height: 100% !important;
+  background: #ffffff !important;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.06) !important;
+  z-index: 1025 !important;
+  float: left !important;
+  display: block !important;
+}
+
+/* Content Area - Full remaining width */
 .pcoded-content {
-  flex: 1;
-  background-color: #f6f7fb;
-  min-width: 0;
+  margin-left: 240px !important;
+  min-height: calc(100vh - 56px) !important;
+  position: relative !important;
+  display: block !important;
+  background-color: #f6f7fb !important;
+  padding: 0 !important;
+  width: calc(100% - 240px) !important;
 }
+
+.pcoded-inner-content {
+  padding: 15px !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+.main-body {
+  width: 100% !important;
+  display: block !important;
+}
+
+.page-wrapper {
+  padding: 0 !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+.page-body {
+  width: 100% !important;
+  display: block !important;
+}
+
+/* Sidebar Menu Items & Links */
 .pcoded .pcoded-navbar .pcoded-item > li > a {
-  padding: 10px 18px;
-  display: flex;
-  align-items: center;
-  color: #4a607a;
-  font-size: 13px;
-  text-decoration: none;
-  transition: all 0.2s ease;
+  display: flex !important;
+  align-items: center !important;
+  padding: 10px 16px !important;
+  position: relative !important;
+  text-decoration: none !important;
+  color: #4a607a !important;
+  font-size: 13px !important;
+  transition: all 0.2s ease !important;
 }
+
 .pcoded .pcoded-navbar .pcoded-item > li > a:hover {
-  background-color: #f0f4f8;
-  color: #007bff;
+  background-color: #f0f4f8 !important;
+  color: #1a73e8 !important;
 }
+
 .pcoded .pcoded-navbar .pcoded-item > li.active > a {
-  background-color: #e8f0fe;
-  color: #1a73e8;
-  font-weight: 600;
-  border-right: 3px solid #1a73e8;
+  background-color: #e8f0fe !important;
+  color: #1a73e8 !important;
+  border-right: 3px solid #1a73e8 !important;
 }
+
 .pcoded .pcoded-navbar .pcoded-item > li > a .pcoded-micon {
-  font-size: 16px;
-  width: 26px;
-  margin-right: 12px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #5c6bc0;
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-right: 12px !important;
+  font-size: 15px !important;
+  color: #5c6bc0 !important;
+  float: none !important;
+  position: static !important;
 }
+
 .pcoded .pcoded-navbar .pcoded-item > li.active > a .pcoded-micon {
-  color: #1a73e8;
+  color: #1a73e8 !important;
 }
+
+/* CRITICAL: Force pcoded-mtext to static position so it never overlaps the icon */
+.pcoded .pcoded-navbar .pcoded-item > li > a .pcoded-mtext {
+  position: static !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #37474f !important;
+  white-space: nowrap !important;
+  top: auto !important;
+  left: auto !important;
+}
+
+.pcoded .pcoded-navbar .pcoded-item > li.active > a .pcoded-mtext {
+  color: #1a73e8 !important;
+  font-weight: 600 !important;
+}
+
+/* Hide legacy letter badges inside icons */
 .pcoded .pcoded-navbar .pcoded-item > li > a > .pcoded-micon b {
   display: none !important;
 }
-.pcoded .pcoded-navbar .pcoded-item > li > a .pcoded-mtext {
-  font-size: 13px;
-  font-weight: 500;
-}
+
 .pcoded .pcoded-navigation-label {
-  padding: 12px 18px 6px;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #9e9e9e;
-  letter-spacing: 0.5px;
+  padding: 14px 18px 6px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  color: #9e9e9e !important;
+  letter-spacing: 0.5px !important;
 }
+
+/* Submenu dropdowns */
 .pcoded-submenu {
-  background: #fafafa;
-  list-style: none;
-  padding: 4px 0;
-  margin: 0;
+  background: #fafafa !important;
+  list-style: none !important;
+  padding: 4px 0 !important;
+  margin: 0 !important;
 }
+
 .pcoded-submenu li a {
-  padding: 8px 18px 8px 45px !important;
+  padding: 8px 18px 8px 46px !important;
   font-size: 12px !important;
   color: #616161 !important;
-  display: flex;
-  align-items: center;
+  display: flex !important;
+  align-items: center !important;
 }
+
 .pcoded-submenu li a:hover {
   color: #1a73e8 !important;
   background: #f0f4f8 !important;
 }
+
 .pcoded-mcaret {
-  margin-left: auto;
+  margin-left: auto !important;
 }
 
-/* Map district link badges */
+/* Map district labels */
 .map-label {
-  position: absolute;
-  font-size: 10px;
-  font-weight: bold;
-  color: #000066;
-  text-decoration: none;
-  background: rgba(255, 255, 255, 0.75);
-  padding: 1px 4px;
-  border-radius: 3px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  transition: all 0.2s ease;
+  position: absolute !important;
+  font-size: 10px !important;
+  font-weight: bold !important;
+  color: #000066 !important;
+  text-decoration: none !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  padding: 1px 4px !important;
+  border-radius: 3px !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25) !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+  z-index: 10 !important;
 }
+
 .map-label:hover {
-  color: #d9534f;
-  background: #fff;
-  transform: scale(1.1);
-  z-index: 100;
+  color: #d9534f !important;
+  background: #ffffff !important;
+  transform: scale(1.1) !important;
+  z-index: 100 !important;
 }

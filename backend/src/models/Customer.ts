@@ -15,16 +15,16 @@ export interface CustomerAttributes {
 }
 
 export class Customer extends Model<CustomerAttributes> implements CustomerAttributes {
-  public CustId!: number;
-  public DistId!: number;
-  public CustName!: string;
-  public CustEmail!: string | null;
-  public CustMobile!: string | null;
-  public CustAddress!: string | null;
-  public LoginId!: string | null;
-  public IsActive!: number;
-  public CreatedBy!: number;
-  public CreatedOnDate!: Date;
+  declare CustId: number;
+  declare DistId: number;
+  declare CustName: string;
+  declare CustEmail: string | null;
+  declare CustMobile: string | null;
+  declare CustAddress: string | null;
+  declare LoginId: string | null;
+  declare IsActive: number;
+  declare CreatedBy: number;
+  declare CreatedOnDate: Date;
 }
 
 Customer.init(

@@ -12,13 +12,13 @@ export interface FaultLogsAttributes {
 }
 
 export class FaultLogs extends Model<FaultLogsAttributes> implements FaultLogsAttributes {
-  public FaultId!: number;
-  public LightId!: number;
-  public IMEINo!: string | null;
-  public FaultCode!: string | null;
-  public FaultDesc!: string | null;
-  public RestBy!: number;
-  public LoggedDate!: Date;
+  declare FaultId: number;
+  declare LightId: number;
+  declare IMEINo: string | null;
+  declare FaultCode: string | null;
+  declare FaultDesc: string | null;
+  declare RestBy: number;
+  declare LoggedDate: Date;
 }
 
 FaultLogs.init(

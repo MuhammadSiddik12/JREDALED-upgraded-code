@@ -12,13 +12,13 @@ export interface MenuAttributes {
 }
 
 export class Menu extends Model<MenuAttributes> implements MenuAttributes {
-  public MenuId!: number;
-  public GroupMenuId!: number;
-  public MenuName!: string | null;
-  public MenuLink!: string | null;
-  public MenuOrder!: number;
-  public CreatedOnDate!: Date;
-  public UpdatedOnDate!: Date;
+  declare MenuId: number;
+  declare GroupMenuId: number;
+  declare MenuName: string | null;
+  declare MenuLink: string | null;
+  declare MenuOrder: number;
+  declare CreatedOnDate: Date;
+  declare UpdatedOnDate: Date;
 }
 
 Menu.init(
