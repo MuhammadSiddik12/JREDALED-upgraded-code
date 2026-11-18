@@ -50,7 +50,7 @@ export async function getFaultReport(req: Request, res: Response): Promise<void>
   const faults = await FaultLogs.findAll({
     where,
     limit: 500,
-    order: [['FaultId', 'DESC']],
+    order: [['SNo', 'DESC']],
   });
 
   res.json({ success: true, data: faults });

@@ -53,8 +53,8 @@ export default function LayoutWrapper({ children, pageTitle, breadcrumb }: Layou
                 <div className="main-body">
                   <div className="page-wrapper" style={{ padding: '15px 20px' }}>
                     {pageTitle && (
-                      <div className="page-header" style={{ marginBottom: 15, padding: '10px 0' }}>
-                        <div className="page-block">
+                      <div className="page-header" style={{ marginBottom: 15, padding: 0, background: 'transparent', boxShadow: 'none' }}>
+                        <div className="page-block" style={{ padding: 0 }}>
                           <div className="row align-items-center">
                             <div className="col-md-8">
                               <div className="page-header-title">

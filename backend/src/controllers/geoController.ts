@@ -72,7 +72,8 @@ export async function getPanchayats(req: Request, res: Response): Promise<void> 
 
 export async function getWards(req: Request, res: Response): Promise<void> {
   const panchayatId = req.query.panchayatId ? Number(req.query.panchayatId) : undefined;
-  const where = panchayatId ? { PanchayatId: panchayatId } : {};
+  const where: any = {};
+  if (panchayatId) where.PanchayatId = panchayatId;
 
   const panchayat = panchayatId ? await Panchayat.findByPk(panchayatId) : null;
   const block = panchayat?.BlockId ? await Blocks.findByPk(panchayat.BlockId) : null;
@@ -80,16 +81,17 @@ export async function getWards(req: Request, res: Response): Promise<void> {
 
   const lights = await Lights.findAll({
     where,
-    attributes: ['WardNo'],
-    group: ['WardNo'],
+    attributes: ['Village'],
+    group: ['Village'],
   });
 
   const wardsWithCounts = await Promise.all(
     lights.map(async (l) => {
-      const wardNo = l.WardNo || '1';
-      const count = await Lights.count({ where: { ...where, WardNo: wardNo } });
+      const wardNo = l.Village || '1';
+      const count = await Lights.count({ where: { ...where, Village: wardNo } }).catch(() => 0);
       return {
         wardNo,
+        village: wardNo,
         panchayatId,
         lightsCount: count,
       };
@@ -106,13 +108,14 @@ export async function getWards(req: Request, res: Response): Promise<void> {
 }
 
 export async function getLights(req: Request, res: Response): Promise<void> {
-  const { districtId, blockId, panchayatId, wardNo } = req.query;
+  const { districtId, blockId, panchayatId, wardNo, village } = req.query;
   const where: any = {};
 
   if (districtId) where.DistrictId = Number(districtId);
   if (blockId) where.BlockId = Number(blockId);
   if (panchayatId) where.PanchayatId = Number(panchayatId);
-  if (wardNo) where.WardNo = String(wardNo);
+  const targetVillage = wardNo || village;
+  if (targetVillage) where.Village = String(targetVillage);
 
   const lights = await Lights.findAll({
     where,

@@ -2,31 +2,75 @@ import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../config/database.js';
 
 export interface FaultLogsAttributes {
-  FaultId?: number;
+  SNo?: number;
+  VendorId?: number;
+  NetworkId?: number;
+  StateId?: number;
+  DistrictId?: number;
+  BlockId?: number;
+  PanchayatId?: number;
+  Village?: string | null;
   LightId?: number;
   IMEINo?: string | null;
-  FaultCode?: string | null;
-  FaultDesc?: string | null;
+  FaultTypeId?: number;
+  FaultDateTime?: Date;
   RestBy?: number;
-  LoggedDate?: Date;
+  RestDateTime?: Date | null;
+  UpdatedOnDate?: Date | null;
 }
 
 export class FaultLogs extends Model<FaultLogsAttributes> implements FaultLogsAttributes {
-  declare FaultId: number;
+  declare SNo: number;
+  declare VendorId: number;
+  declare NetworkId: number;
+  declare StateId: number;
+  declare DistrictId: number;
+  declare BlockId: number;
+  declare PanchayatId: number;
+  declare Village: string | null;
   declare LightId: number;
   declare IMEINo: string | null;
-  declare FaultCode: string | null;
-  declare FaultDesc: string | null;
+  declare FaultTypeId: number;
+  declare FaultDateTime: Date;
   declare RestBy: number;
-  declare LoggedDate: Date;
+  declare RestDateTime: Date | null;
+  declare UpdatedOnDate: Date | null;
 }
 
 FaultLogs.init(
   {
-    FaultId: {
+    SNo: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
+    },
+    VendorId: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    NetworkId: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    StateId: {
+      type: DataTypes.INTEGER,
+      defaultValue: 1,
+    },
+    DistrictId: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    BlockId: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    PanchayatId: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    Village: {
+      type: DataTypes.STRING(100),
+      allowNull: true,
     },
     LightId: {
       type: DataTypes.INTEGER,
@@ -36,21 +80,25 @@ FaultLogs.init(
       type: DataTypes.STRING(30),
       allowNull: true,
     },
-    FaultCode: {
-      type: DataTypes.STRING(50),
-      allowNull: true,
+    FaultTypeId: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
     },
-    FaultDesc: {
-      type: DataTypes.TEXT,
-      allowNull: true,
+    FaultDateTime: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
     },
     RestBy: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
-    LoggedDate: {
+    RestDateTime: {
       type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
+      allowNull: true,
+    },
+    UpdatedOnDate: {
+      type: DataTypes.DATE,
+      allowNull: true,
     },
   },
   {

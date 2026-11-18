@@ -1,21 +1,35 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import LayoutWrapper from '../../components/LayoutWrapper';
 import { api } from '../../lib/api';
 
-export default function LightsPage() {
+function LightsContent() {
+  const searchParams = useSearchParams();
+  const districtId = searchParams.get('districtId');
+  const blockId = searchParams.get('blockId');
+  const panchayatId = searchParams.get('panchayatId');
+  const wardNo = searchParams.get('wardNo');
+
   const [lights, setLights] = useState<any[]>([]);
 
   useEffect(() => {
     async function loadLights() {
-      const res = await api.get('/geo/lights');
+      const q = new URLSearchParams();
+      if (districtId) q.append('districtId', districtId);
+      if (blockId) q.append('blockId', blockId);
+      if (panchayatId) q.append('panchayatId', panchayatId);
+      if (wardNo) q.append('wardNo', wardNo);
+
+      const qs = q.toString() ? `?${q.toString()}` : '';
+      const res = await api.get(`/geo/lights${qs}`);
       if (res.success) {
         setLights(res.data);
       }
     }
     loadLights();
-  }, []);
+  }, [districtId, blockId, panchayatId, wardNo]);
 
   return (
     <LayoutWrapper pageTitle="Smart Solar Street Lights Status" breadcrumb={['Dashboard', 'Luminaries']}>
@@ -48,9 +62,9 @@ export default function LightsPage() {
                   lights.map((l) => (
                     <tr key={l.LightId}>
                       <td>{l.LightId}</td>
-                      <td>{l.PoleNo || '-'}</td>
+                      <td>{l.PRDPoleId || l.PoleNo || '-'}</td>
                       <td>{l.IMEINo || '-'}</td>
-                      <td>Ward {l.WardNo}</td>
+                      <td>Ward {l.Village || l.WardNo || '-'}</td>
                       <td>
                         {l.FaultStatus === 0 ? (
                           <span className="badge badge-success" style={{ backgroundColor: '#00D76B', padding: '5px 10px' }}>
@@ -69,7 +83,7 @@ export default function LightsPage() {
                           <span className="text-danger"><i className="fa fa-battery-empty"></i> Discharged</span>
                         )}
                       </td>
-                      <td>{l.EnergyKWH || '0.00'}</td>
+                      <td>{l.KWH || l.EnergyKWH || '0.00'}</td>
                     </tr>
                   ))
                 )}
@@ -79,5 +93,13 @@ export default function LightsPage() {
         </div>
       </div>
     </LayoutWrapper>
+  );
+}
+
+export default function LightsPage() {
+  return (
+    <Suspense fallback={<div>Loading lights...</div>}>
+      <LightsContent />
+    </Suspense>
   );
 }

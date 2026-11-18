@@ -4,20 +4,28 @@ import { sequelize } from '../config/database.js';
 export interface NetworksAttributes {
   NetworkId?: number;
   NetworkName?: string | null;
+  StateId?: number | null;
   DistrictId?: number | null;
   BlockId?: number | null;
   PanchayatId?: number | null;
-  TotalLights?: number;
+  Village?: string | null;
+  VendorId?: number | null;
+  IsActive?: number;
+  CreatedBy?: number;
   CreatedOnDate?: Date;
 }
 
 export class Networks extends Model<NetworksAttributes> implements NetworksAttributes {
   declare NetworkId: number;
   declare NetworkName: string | null;
+  declare StateId: number | null;
   declare DistrictId: number | null;
   declare BlockId: number | null;
   declare PanchayatId: number | null;
-  declare TotalLights: number;
+  declare Village: string | null;
+  declare VendorId: number | null;
+  declare IsActive: number;
+  declare CreatedBy: number;
   declare CreatedOnDate: Date;
 }
 
@@ -32,6 +40,10 @@ Networks.init(
       type: DataTypes.STRING(200),
       allowNull: true,
     },
+    StateId: {
+      type: DataTypes.INTEGER,
+      defaultValue: 1,
+    },
     DistrictId: {
       type: DataTypes.INTEGER,
       allowNull: true,
@@ -44,7 +56,19 @@ Networks.init(
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    TotalLights: {
+    Village: {
+      type: DataTypes.STRING(100),
+      allowNull: true,
+    },
+    VendorId: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    IsActive: {
+      type: DataTypes.INTEGER,
+      defaultValue: 1,
+    },
+    CreatedBy: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
