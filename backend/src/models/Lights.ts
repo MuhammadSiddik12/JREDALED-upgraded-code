@@ -13,7 +13,7 @@ export interface LightsAttributes {
   Status?: number;
   FaultStatus?: number;
   BatStateCharge?: number;
-  EnergyKWH?: number;
+  KWH?: number;
   CreatedOnDate?: Date;
 }
 
@@ -29,7 +29,7 @@ export class Lights extends Model<LightsAttributes> implements LightsAttributes 
   public Status!: number;
   public FaultStatus!: number;
   public BatStateCharge!: number;
-  public EnergyKWH!: number;
+  public KWH!: number;
   public CreatedOnDate!: Date;
 }
 
@@ -80,7 +80,7 @@ Lights.init(
       type: DataTypes.INTEGER,
       defaultValue: 1,
     },
-    EnergyKWH: {
+    KWH: {
       type: DataTypes.DECIMAL(10, 2),
       defaultValue: 0.0,
     },

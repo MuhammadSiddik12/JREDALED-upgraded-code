@@ -26,7 +26,22 @@ export default function LayoutWrapper({ children, pageTitle, breadcrumb }: Layou
   }, []);
 
   return (
-    <div id="pcoded" className="pcoded">
+    <div
+      id="pcoded"
+      className="pcoded"
+      {...({
+        'theme-layout': 'vertical',
+        'vertical-placement': 'left',
+        'vertical-layout': 'wide',
+        'pcoded-device-type': 'desktop',
+        'vertical-nav-type': sidebarCollapsed ? 'collapsed' : 'expanded',
+        'vertical-effect': 'shrink',
+        'vnavigation-view': 'view1',
+        'nav-type': 'st2',
+        'fream-type': 'theme1',
+        'layout-type': 'light',
+      } as any)}
+    >
       <div className="pcoded-overlay-box"></div>
       <div className="pcoded-container navbar-wrapper">
         <Navbar userName={userName} onToggleSidebar={() => setSidebarCollapsed(!sidebarCollapsed)} />
@@ -36,29 +51,30 @@ export default function LayoutWrapper({ children, pageTitle, breadcrumb }: Layou
             <div className="pcoded-content">
               <div className="pcoded-inner-content">
                 <div className="main-body">
-                  <div className="page-wrapper">
+                  <div className="page-wrapper" style={{ padding: '15px 20px' }}>
                     {pageTitle && (
-                      <div className="page-header" style={{ marginBottom: 15 }}>
+                      <div className="page-header" style={{ marginBottom: 15, padding: '10px 0' }}>
                         <div className="page-block">
                           <div className="row align-items-center">
                             <div className="col-md-8">
                               <div className="page-header-title">
-                                <h5 className="m-b-10" style={{ color: '#006', fontWeight: 'bold' }}>
+                                <h5 className="m-b-10" style={{ color: '#006', fontWeight: 'bold', fontSize: '18px', margin: 0 }}>
                                   {pageTitle}
                                 </h5>
                               </div>
                             </div>
                             {breadcrumb && (
                               <div className="col-md-4">
-                                <ul className="breadcrumb-title" style={{ float: 'right' }}>
-                                  <li className="breadcrumb-item">
-                                    <a href="/dashboard">
+                                <ul className="breadcrumb-title" style={{ float: 'right', margin: 0, padding: 0, listStyle: 'none' }}>
+                                  <li className="breadcrumb-item" style={{ display: 'inline-block', marginRight: '5px' }}>
+                                    <a href="/dashboard" style={{ color: '#666' }}>
                                       <i className="fa fa-home"></i>
                                     </a>
                                   </li>
                                   {breadcrumb.map((b, i) => (
-                                    <li key={i} className="breadcrumb-item">
-                                      <span>{b}</span>
+                                    <li key={i} className="breadcrumb-item" style={{ display: 'inline-block' }}>
+                                      <span style={{ color: '#999', margin: '0 5px' }}>/</span>
+                                      <span style={{ color: '#333', fontSize: '13px' }}>{b}</span>
                                     </li>
                                   ))}
                                 </ul>

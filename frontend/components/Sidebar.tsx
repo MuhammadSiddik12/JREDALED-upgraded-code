@@ -42,7 +42,6 @@ export default function Sidebar({ collapsed = false }: SidebarProps) {
             <Link href="/dashboard" className="waves-effect waves-dark">
               <span className="pcoded-micon">
                 <i className="fa fa-tachometer" aria-hidden="true"></i>
-                <b>D</b>
               </span>
               <span className="pcoded-mtext">Dashboard</span>
               <span className="pcoded-mcaret"></span>
@@ -392,7 +391,6 @@ export default function Sidebar({ collapsed = false }: SidebarProps) {
             <Link href="/change-password" className="waves-effect waves-dark">
               <span className="pcoded-micon">
                 <i className="fa fa-cog" aria-hidden="true"></i>
-                <b>C</b>
               </span>
               <span className="pcoded-mtext">Change Password</span>
               <span className="pcoded-mcaret"></span>
@@ -411,7 +409,6 @@ export default function Sidebar({ collapsed = false }: SidebarProps) {
             >
               <span className="pcoded-micon">
                 <i className="fa fa-power-off" aria-hidden="true"></i>
-                <b>L</b>
               </span>
               <span className="pcoded-mtext">Logout</span>
               <span className="pcoded-mcaret"></span>
